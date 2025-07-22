@@ -12,6 +12,12 @@ class Category extends Model
     /** @use HasFactory<\Database\Factories\CategoryFactory> */
     use HasFactory, HasUlids;
 
+    protected $fillable = [
+        'name',
+        'description',
+        'picture_url'
+    ];
+
     public function articles()
     {
         return $this->hasMany(Article::class);

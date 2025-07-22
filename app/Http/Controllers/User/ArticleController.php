@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -30,8 +31,8 @@ class ArticleController extends Controller
     public function create()
     {
         $categories = Category::orderBy('name')->get();
-        // $tags = Tag::orderBy('name')->get();
-        return view('pages.user.article.create', compact('categories'));
+        $tags = Tag::orderBy('name')->get();
+        return view('pages.user.article.create', compact('categories', 'tags'));
     }
 
     public function store(StoreArticleRequest $request)
@@ -47,8 +48,9 @@ class ArticleController extends Controller
             $imageUrl = Storage::url($path);
         }
 
+
         $articleData = array_merge($validated, [
-            'author_id' => Auth::id(),
+            'user_id' => Auth::id(),
             'slug' => Str::slug($validated['title']) . '-' . Str::lower(Str::random(6)),
             'published_at' => ($validated['status'] ?? 'draft') === 'published' ? Carbon::now() : null,
             'featured_image_url' => $imageUrl,
@@ -56,9 +58,10 @@ class ArticleController extends Controller
 
         $article = Article::create($articleData);
 
-        // if (!empty($validated['tags'])) {
-        //     $article->tags()->sync($validated['tags']);
-        // }
+        // Sinkronisasi tags setelah artikel dibuat
+        if ($request->filled('tags')) {
+            $article->tags()->sync($validated['tags']);
+        }
 
         return redirect()->route('articles.show', $article)->with('success', 'Article created successfully!');
     }
@@ -76,8 +79,10 @@ class ArticleController extends Controller
     public function edit(Article $article)
     {
         $categories = Category::orderBy('name')->get();
-        // $tags = Tag::orderBy('name')->get();
-        return view('pages.user.article.edit', compact('article', 'categories'));
+        $tags = Tag::orderBy('name')->get();
+        // Muat tag yang sudah terpilih untuk artikel ini
+        $article->load('tags');
+        return view('pages.user.article.edit', compact('article', 'categories', 'tags'));
     }
 
     public function update(UpdateArticleRequest $request, Article $article)
@@ -109,9 +114,12 @@ class ArticleController extends Controller
 
         $article->update($validated);
 
-        // if (isset($validated['tags'])) {
-        //     $article->tags()->sync($validated['tags']);
-        // }
+        // Sinkronisasi tags setelah artikel diperbarui
+        if ($request->has('tags')) {
+            $article->tags()->sync($request->validated()['tags'] ?? []);
+        } else {
+            $article->tags()->detach(); // Hapus semua tag jika input kosong
+        }
 
         return redirect()->route('articles.show', $article)->with('success', 'Article updated successfully!');
     }

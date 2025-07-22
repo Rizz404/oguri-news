@@ -11,6 +11,11 @@ class Tag extends Model
     /** @use HasFactory<\Database\Factories\TagFactory> */
     use HasFactory, HasUlids;
 
+    protected $fillable = [
+        'name',
+        'description',
+    ];
+
     public function articles()
     {
         return $this->hasMany(Article::class);

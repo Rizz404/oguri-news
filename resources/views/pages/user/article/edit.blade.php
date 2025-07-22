@@ -31,6 +31,8 @@
                     </x-form.dropdown>
                 </div>
 
+                <x-form.select-many name="tags" label="Tags" :options="$tags" :selected="$article->tags" />
+
                 <x-form.textarea name="excerpt" label="Excerpt (Summary)"
                     placeholder="A short summary of your article..." rows="3" :value="$article->excerpt" />
 

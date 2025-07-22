@@ -75,7 +75,7 @@ class Article extends Model
         });
 
         $query->when($filters['author'] ?? false, function ($query, $author) {
-            $query->whereHas('user', function ($query) use ($author) {
+            $query->whereHas('author', function ($query) use ($author) {
                 $query->where('name', $author);
             });
         });
