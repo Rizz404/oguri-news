@@ -8,67 +8,67 @@
 @source '../**/*.js';
 
 /* =================================
-   CAT SHOP THEME CONFIGURATION
-   ================================= */
+   NEWS WEB APP THEME CONFIGURATION
+   ================================= */
 @theme {
-  /* === PRIMARY (Orange - Brand utama) === */
-  --color-primary-100: oklch(0.95 0.05 42);
+  /* === PRIMARY (Deep Blue - Professional & trustworthy) === */
+  --color-primary-100: oklch(0.95 0.04 230);
   /* Background light */
-  --color-primary-500: oklch(0.65 0.20 28);
+  --color-primary-500: oklch(0.45 0.15 235);
   /* Default button */
-  --color-primary-600: oklch(0.56 0.18 25);
+  --color-primary-600: oklch(0.38 0.13 232);
   /* Hover */
-  --color-primary-700: oklch(0.47 0.16 22);
+  --color-primary-700: oklch(0.31 0.11 230);
   /* Active/pressed */
 
-  /* === SECONDARY (Blue - Trust & reliability) === */
-  --color-secondary-100: oklch(0.94 0.04 218);
+  /* === SECONDARY (Burgundy Red - Breaking news & highlights) === */
+  --color-secondary-100: oklch(0.94 0.04 15);
   /* Background light */
-  --color-secondary-500: oklch(0.58 0.18 208);
+  --color-secondary-500: oklch(0.52 0.18 12);
   /* Default */
-  --color-secondary-600: oklch(0.48 0.16 206);
+  --color-secondary-600: oklch(0.44 0.16 10);
   /* Hover */
-  --color-secondary-700: oklch(0.40 0.14 204);
+  --color-secondary-700: oklch(0.36 0.14 8);
   /* Active */
 
-  /* === SUCCESS (Green - Status berhasil) === */
-  --color-success-100: oklch(0.94 0.04 138);
+  /* === SUCCESS (Green - Verified/Published status) === */
+  --color-success-100: oklch(0.94 0.04 155);
   /* Background light */
-  --color-success-500: oklch(0.62 0.18 128);
+  --color-success-500: oklch(0.58 0.16 148);
   /* Default */
-  --color-success-600: oklch(0.53 0.16 126);
+  --color-success-600: oklch(0.50 0.14 146);
   /* Hover */
 
-  /* === WARNING (Yellow - Peringatan) === */
-  --color-warning-100: oklch(0.95 0.05 82);
+  /* === WARNING (Amber - Pending/Draft status) === */
+  --color-warning-100: oklch(0.95 0.05 75);
   /* Background light */
-  --color-warning-500: oklch(0.67 0.20 68);
+  --color-warning-500: oklch(0.70 0.18 68);
   /* Default */
-  --color-warning-600: oklch(0.58 0.18 65);
+  --color-warning-600: oklch(0.62 0.16 65);
   /* Hover */
 
-  /* === DANGER (Red - Error/hapus) === */
-  --color-danger-100: oklch(0.94 0.04 12);
+  /* === DANGER (Crimson Red - Urgent/Delete) === */
+  --color-danger-100: oklch(0.94 0.04 5);
   /* Background light */
-  --color-danger-500: oklch(0.62 0.18 0);
+  --color-danger-500: oklch(0.58 0.20 8);
   /* Default */
-  --color-danger-600: oklch(0.53 0.16 358);
+  --color-danger-600: oklch(0.50 0.18 6);
   /* Hover */
 
-  /* === NEUTRAL (Gray - Text & borders) === */
-  --color-neutral-100: oklch(0.95 0.005 42);
+  /* === NEUTRAL (Cool Gray - Text & borders) === */
+  --color-neutral-100: oklch(0.96 0.003 235);
   /* Background subtle */
-  --color-neutral-200: oklch(0.89 0.008 38);
+  --color-neutral-200: oklch(0.90 0.006 232);
   /* Border light */
-  --color-neutral-300: oklch(0.82 0.010 35);
+  --color-neutral-300: oklch(0.83 0.008 230);
   /* Border default */
-  --color-neutral-500: oklch(0.52 0.005 28);
+  --color-neutral-500: oklch(0.54 0.004 228);
   /* Text secondary */
-  --color-neutral-600: oklch(0.42 0.003 25);
+  --color-neutral-600: oklch(0.44 0.003 225);
   /* Text default */
-  --color-neutral-800: oklch(0.26 0.001 20);
+  --color-neutral-800: oklch(0.28 0.002 220);
   /* Text strong */
-  --color-neutral-900: oklch(0.18 0.000 18);
+  --color-neutral-900: oklch(0.20 0.001 218);
   /* Text heading */
 
   /* === FONTS === */
@@ -78,8 +78,8 @@
 }
 
 /* =================================
-   CUSTOM UTILITIES
-   ================================= */
+   CUSTOM UTILITIES
+   ================================= */
 @layer utilities {
   .text-rendering-optimized {
     text-rendering: optimizeLegibility;
@@ -172,8 +172,8 @@
 }
 
 /* =================================
-   COMPONENT CLASSES
-   ================================= */
+   COMPONENT CLASSES
+   ================================= */
 @layer components {
 
   /* === BUTTONS === */
@@ -394,8 +394,8 @@
 }
 
 /* =================================
-   BASE STYLES
-   ================================= */
+   BASE STYLES
+   ================================= */
 @layer base {
   * {
     box-sizing: border-box;
@@ -523,8 +523,8 @@
 }
 
 /* =================================
-   DARK MODE
-   ================================= */
+   DARK MODE
+   ================================= */
 /* @media (prefers-color-scheme: dark) {
   body {
     @apply bg-neutral-900 text-neutral-100;
@@ -605,8 +605,8 @@
 } */
 
 /* =================================
-   RESPONSIVE UTILITIES
-   ================================= */
+   RESPONSIVE UTILITIES
+   ================================= */
 @layer utilities {
   .container-fluid {
     @apply w-full px-4 sm:px-6 lg:px-8;
@@ -622,8 +622,8 @@
 }
 
 /* =================================
-   PRINT STYLES
-   ================================= */
+   PRINT STYLES
+   ================================= */
 @media print {
   * {
     background: transparent !important;
@@ -665,8 +665,8 @@
 }
 
 /* =================================
-   ACCESSIBILITY
-   ================================= */
+   ACCESSIBILITY
+   ================================= */
 @media (prefers-reduced-motion: reduce) {
 
   *,
