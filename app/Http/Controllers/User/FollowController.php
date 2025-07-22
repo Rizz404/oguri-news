@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
+
 use App\Models\Follow;
 use App\Http\Requests\StoreFollowRequest;
 use App\Http\Requests\UpdateFollowRequest;

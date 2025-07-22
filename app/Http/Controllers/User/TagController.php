@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
+
 use App\Models\Tag;
 use App\Http\Requests\StoreTagRequest;
 use App\Http\Requests\UpdateTagRequest;

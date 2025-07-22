@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
+
 use App\Models\Profile;
 use App\Http\Requests\StoreProfileRequest;
 use App\Http\Requests\UpdateProfileRequest;

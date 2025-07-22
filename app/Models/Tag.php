@@ -10,4 +10,9 @@ class Tag extends Model
 {
     /** @use HasFactory<\Database\Factories\TagFactory> */
     use HasFactory, HasUlids;
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
 }

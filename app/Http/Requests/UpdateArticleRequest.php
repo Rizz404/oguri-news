@@ -3,26 +3,25 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateArticleRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
     public function rules(): array
     {
         return [
-            //
+            'title' => ['sometimes', 'required', 'string', 'max:255'],
+            'content' => ['sometimes', 'required', 'string'],
+            'category_id' => ['sometimes', 'required', Rule::exists('categories', 'id')],
+            'tags' => ['nullable', 'array'],
+            'tags.*' => [Rule::exists('tags', 'id')],
+            'status' => ['sometimes', 'nullable', Rule::in(['published', 'draft', 'pending'])],
+            'featured_image' => ['sometimes', 'nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
         ];
     }
 }
